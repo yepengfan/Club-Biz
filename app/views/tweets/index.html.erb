@@ -1,0 +1,11 @@
+<h1>Tweets</h1>
+
+<table>
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.contents %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
