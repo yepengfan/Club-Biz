@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-  def home
-  	@users = User.where(id: current_user.id)
-  end
+	def home
+		if @users
+			@users = User.where(id: current_user.id)
+		end
+	end
 end
