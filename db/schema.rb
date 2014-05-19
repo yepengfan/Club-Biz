@@ -11,7 +11,92 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404051215) do
+ActiveRecord::Schema.define(version: 20140519020609) do
+
+  create_table "activities", force: true do |t|
+    t.integer  "society_id"
+    t.integer  "event_id"
+    t.boolean  "host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "admins", force: true do |t|
+    t.string   "email"
+    t.string   "password"
+    t.text     "announcement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bearers", force: true do |t|
+    t.integer  "society_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "total"
+    t.integer  "remain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "society_id"
+    t.integer  "user_id"
+    t.integer  "auth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "societies", force: true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.string   "regi_num"
+    t.string   "website"
+    t.string   "p_first_name"
+    t.string   "p_last_name"
+    t.string   "p_phone"
+    t.string   "p_email"
+    t.integer  "state"
+    t.text     "announcement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tweets", force: true do |t|
     t.text     "contents"
@@ -37,6 +122,8 @@ ActiveRecord::Schema.define(version: 20140404051215) do
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

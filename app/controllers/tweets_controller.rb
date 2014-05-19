@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+ before_filter :authenticate_user!, :except => [:show, :index]
+ before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   # GET /tweets
   # GET /tweets.json
@@ -9,6 +10,7 @@ class TweetsController < ApplicationController
 
   def my_tweets
     @tweets = Tweet.where(user_id: current_user.id)
+    @users = User.where(id: current_user.id)
   end
 
   # GET /tweets/1
@@ -76,4 +78,4 @@ class TweetsController < ApplicationController
     def tweet_params
       params.require(:tweet).permit(:contents)
     end
-end
+  end

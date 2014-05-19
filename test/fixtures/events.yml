@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  start: 2014-05-19 01:48:20
+  end: 2014-05-19 01:48:20
+  total: 1
+  remain: 1
+
+two:
+  name: MyString
+  category: MyString
+  start: 2014-05-19 01:48:20
+  end: 2014-05-19 01:48:20
+  total: 1
+  remain: 1
