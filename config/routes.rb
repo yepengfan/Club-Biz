@@ -1,9 +1,10 @@
 Tweeter::Application.routes.draw do
   get "pages/home"
   devise_for :users
-  resources :tweets
+  # resources :tweets
 
-  get "/my_tweets" => "tweets#my_tweets", as: :my_tweets
+  # get "/my_tweets" => "tweets#my_tweets", as: :my_tweets
+  get "/account" => "pages#account", as: :my_account
 
   root 'pages#home'
 
