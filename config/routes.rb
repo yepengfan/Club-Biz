@@ -1,4 +1,5 @@
 Tweeter::Application.routes.draw do
+  devise_for :admins
   get "pages/home"
   devise_for :users
   # resources :tweets
