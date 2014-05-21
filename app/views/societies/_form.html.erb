@@ -1,0 +1,42 @@
+<%= form_for @society, :html => { :multipart => true } do |f| %>
+<p>
+	<%= f.label :name, 'Name'%>
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= f.label :desc, 'Description'%>
+	<%= f.text_area :desc, :cols => 20, :rows => 10 %>
+</p>
+<p>
+	<%= f.label :regi_num, 'Registration Number' %>
+	<%= f.text_field :regi_num%>
+</p>
+<p>
+	<%= f.label :website, 'Website'%>
+	<%= f.text_field :website%>
+</p>
+<p>
+	<%= f.label :p_first_name, 'President First Name' %>
+	<%= f.text_field :p_first_name%>
+</p>
+<p>
+	<%= f.label :p_last_name, 'President Last Name'%>
+	<%= f.text_field :p_last_name%>
+</p>
+
+<p>
+	<%= f.label :p_phone, 'President Phone Number'%>
+	<%= f.text_field :p_phone%>
+</p>
+<p>
+	<%= f.label :p_email, 'President Email'%>
+	<%= f.text_field :p_email%>
+</p>
+<p>
+	<%= f.label :photo, 'Society Photo'%>
+	<%= f.file_field :photo %>
+</p>
+<p>
+	<%= f.submit "Submit"%>
+</p>
+<% end %>

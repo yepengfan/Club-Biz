@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521015311) do
+ActiveRecord::Schema.define(version: 20140521122442) do
 
   create_table "activities", force: true do |t|
     t.integer  "society_id"
@@ -49,13 +49,6 @@ ActiveRecord::Schema.define(version: 20140521015311) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "comments", force: true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
@@ -74,6 +67,11 @@ ActiveRecord::Schema.define(version: 20140521015311) do
     t.integer  "remain"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.text     "desc"
   end
 
   create_table "memberships", force: true do |t|
@@ -106,6 +104,10 @@ ActiveRecord::Schema.define(version: 20140521015311) do
     t.text     "announcement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "tweets", force: true do |t|
