@@ -5,11 +5,48 @@ class Society < ActiveRecord::Base
 	has_many :memberships
 	has_many :users, through: :memberships
 
-	has_attached_file :photo, :styles => { :small => "150x150>" },
-	:url  => "/assets/events/:id/:style/:basename.:extension",
-	:path => ":rails_root/public/assets/events/:id/:style/:basename.:extension"
+	def upload(society_params)
+		self.name = society_params[:name]
+		self.desc = society_params[:desc]
+		self.regi_num = society_params[:regi_num]
+		self.website = society_params[:website]
+		self.p_first_name = society_params[:p_first_name]
+		self.p_last_name = society_params[:p_last_name]
+		self.p_phone = society_params[:p_phone]
+		self.p_email = society_params[:p_email]
+		self.state = 0
+		self.announcement = ""
 
-	validates_attachment_presence :photo
-	validates_attachment_size :photo, :less_than => 5.megabytes
-	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+		if society_params[:photo_1]
+			uploaded_io = society_params[:photo_1]
+			File.open(Rails.root.join('app', 'assets', 'upload', society_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+
+			self.photo_1 = society_params[:name] +'_'+uploaded_io.original_filename
+		end
+
+		if society_params[:photo_2]
+			uploaded_io = society_params[:photo_2]
+			File.open(Rails.root.join('app', 'assets', 'upload', society_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+			self.photo_2 = society_params[:name] +'_'+uploaded_io.original_filename
+		end
+
+		if society_params[:photo_3]
+			uploaded_io = society_params[:photo_3]
+			File.open(Rails.root.join('app', 'assets', 'upload', society_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+			self.photo_3 = society_params[:name] +'_'+uploaded_io.original_filename
+		end
+
+		self.save
+	end
+
+	private
+	def society_params
+		params.require(:society).permit!
+	end
 end

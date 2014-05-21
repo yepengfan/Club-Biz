@@ -4,6 +4,7 @@ class SocietiesController < ApplicationController
 	end
 
 	def show
+		@society = Society.find(params[:id])
 		render 'show'
 	end
 
@@ -12,8 +13,10 @@ class SocietiesController < ApplicationController
 	end
 
 	def create
-		@society = Society.new(society_params)
-		@society.save
+		# @society = Society.new(society_params)
+		# @society.save
+		@society = Society.new
+		@society.upload(society_params)
 		index
 	end
 
