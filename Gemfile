@@ -33,7 +33,6 @@ group :doc do
 end
 
 gem 'devise'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -46,4 +45,3 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'railroady'
-gem "paperclip", "~> 4.1"
