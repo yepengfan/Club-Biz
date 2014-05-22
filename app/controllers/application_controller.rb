@@ -12,11 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def after_sign_in_path_for(admins)
-  	show_registrations_path
-  end
-
-  def after_sign_in_path_for(users)
-    root_path
+  def after_sign_in_path_for(resource)
+    case resource
+    when User then root_path
+    when Admin then show_registrations_path
+    end
   end
 end

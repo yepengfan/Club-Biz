@@ -8,7 +8,7 @@ Tweeter::Application.routes.draw do
 
   #pages_controller
   post '/search' => 'pages#search', as: :search_input
-  get '/applications' => 'pages#show_registrations', as: :show_registrations
+  get '/applications' => 'admins#show_registrations', as: :show_registrations
 
   #societies_controller
   post '/applications' => 'societies#confirm', as: :confirm
