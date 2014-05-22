@@ -5,8 +5,12 @@ Tweeter::Application.routes.draw do
   resources :events
   resources :societies
 
+
+
+  #pages_controller
+  post '/search' => 'pages#search', as: :search_input
   # get "/my_tweets" => "tweets#my_tweets", as: :my_tweets
-  get "/account" => "pages#account", as: :my_account
+  get '/account' => 'pages#account', as: :my_account
 
   root 'pages#home'
 

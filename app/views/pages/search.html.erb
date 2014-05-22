@@ -1,0 +1,14 @@
+<h1>Pages#search</h1>
+<p>Find me in app/views/pages/search.html.erb</p>
+
+<p>Result of Societies</p>
+<% @societies.each do |f| %>
+<%= f.name %> <%= link_to "View", society_path(:id => f.id) %><br/> <hr/>
+<% end %>
+
+<p>Result of Events</p>
+<% @events.each do |f| %>
+<%= f.name %> <%= link_to "View", event_path(:id => f.id) %><br/> <hr/>
+<% end %>
+
+<%= link_to "Back", root_path %>

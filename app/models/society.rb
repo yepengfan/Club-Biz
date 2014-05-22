@@ -45,8 +45,22 @@ class Society < ActiveRecord::Base
 		self.save
 	end
 
-	private
-	def society_params
-		params.require(:society).permit!
+
+	def self.search(keyword)
+		result = []
+		if keyword != ''
+			societies_list = Society.all
+			societies_list.each do |society|
+				if society.name.include? keyword
+					result.push(society)
+				end
+
+			end
+			return result
+		else
+			result = Society.all
+			return result
+		end
 	end
+
 end
