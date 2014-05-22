@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+	before_filter :authenticate_user!, :except => [:home]
+	before_filter :authenticate_admin!, :except => [:home]
+	
 	def home
 		if @users
 			@users = User.where(id: current_user.id)
@@ -11,9 +14,6 @@ class PagesController < ApplicationController
 
 	def show_registrations
 		@societies = Society.all
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		
-		puts current_admin.id
 	end
 
 	def search

@@ -16,4 +16,7 @@ class ApplicationController < ActionController::Base
   	show_registrations_path
   end
 
+  def after_sign_in_path_for(users)
+    root_path
+  end
 end
