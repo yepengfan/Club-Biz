@@ -12,6 +12,17 @@ class SocietiesController < ApplicationController
 		@society = Society.new
 	end
 
+	def confirm
+		# puts "!!!!!!!!!!!!!!!!!!!!!!!"
+		# puts params[:id]
+		# puts params[:state]
+		@society = Society.find(params[:id])
+		@society.state = params[:state]
+		@society.save
+		
+		redirect_to show_registrations_path
+	end
+
 	def create
 		# @society = Society.new(society_params)
 		# @society.save

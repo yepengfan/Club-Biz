@@ -9,6 +9,13 @@ class PagesController < ApplicationController
 		
 	end
 
+	def show_registrations
+		@societies = Society.all
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		
+		puts current_admin.id
+	end
+
 	def search
 		@societies = Society.search(params[:search_input])
 		@events = Event.search(params[:search_input])
