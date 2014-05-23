@@ -12,6 +12,19 @@ class SocietiesController < ApplicationController
 	end
 
 	def edit
+		@society = Society.find(params[:id])
+	end
+
+	def confirm_edit
+		puts society_params[:desc]
+		puts params[:id]
+		@society = Society.find(params[:id])
+		puts @society.name
+		@society.update(society_params)
+		puts "!!!!!!!!!!!!!!"
+		puts @society.desc
+
+		render 'edit'
 	end
 
 	def confirm
@@ -32,8 +45,9 @@ class SocietiesController < ApplicationController
 		# puts current_user.id
 		@society = Society.new
 		@society.upload(society_params)
+
 		@memberships = Membership.new
-		@memberships.update(@society.id, current_user.id)
+		@memberships.admin_update(@society.id, current_user.id)
 
 		index
 	end

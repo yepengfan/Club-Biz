@@ -20,7 +20,7 @@ Tweeter::Application.routes.draw do
   post '/societies/:id/memberships' => 'societies#confirm_memberships', as: :confirm_memberships
 
   get '/my_societies' => 'societies#my_societies', as: :my_societies
-
+  post '/societies/:id/edit' => 'societies#confirm_edit', as: :confirm_edit_society
   #events_controller
   get '/my_events' => 'events#my_events', as: :my_events
 
