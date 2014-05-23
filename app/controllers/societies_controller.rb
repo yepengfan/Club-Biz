@@ -11,6 +11,8 @@ class SocietiesController < ApplicationController
 	def new
 		@society = Society.new
 	end
+	def edit
+	end
 
 	def confirm
 		# puts "!!!!!!!!!!!!!!!!!!!!!!!"
@@ -26,8 +28,12 @@ class SocietiesController < ApplicationController
 	def create
 		# @society = Society.new(society_params)
 		# @society.save
-		@society = Society.new
-		@society.upload(society_params)
+
+		puts current_user.id
+
+		# @society = Society.new
+		# @society.upload(society_params)
+		
 		index
 	end
 
