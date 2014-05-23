@@ -18,6 +18,9 @@ class EventsController < ApplicationController
 		puts @event.inspect()
 		@event.save
 		show
+	end
+
+	def my_events
 		
 	end
 

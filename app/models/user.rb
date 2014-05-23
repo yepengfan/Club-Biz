@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
   	"#{self[:first_name]} #{self[:last_name]}"
   end
 
+  def new_user(useremail, userpassword, userfirst, userlast, userphone )
+    self.new ({:email => useremail,
+     :password => userpassword,
+     :password_confirmation => userpassword,
+     :first_name => userfirst,
+     :last_name => userlast,
+     :phone => userphone,
+     :admin => "false" }).save(:validate => false)
+  end
 end

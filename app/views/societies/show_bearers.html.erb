@@ -1,0 +1,10 @@
+<h1>Societies#show_bearers</h1>
+
+<% @bearers.each do |bearer|%>
+<form>
+First name: <%= bearer.first_name%><br>
+Last name: <%= bearer.last_name%><br>
+Phone: <%= bearer.phone%>
+Email: <%= bearer.email%>
+</form> 
+<% end %>
