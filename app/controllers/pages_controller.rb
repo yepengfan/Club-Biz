@@ -1,18 +1,17 @@
 class PagesController < ApplicationController
-<<<<<<< HEAD
+
 	before_filter :authenticate_user!, :except => [:home]
-=======
->>>>>>> 021aa5e6f7d8200f24455ad0ba4d7d13b0d93e79
+
+
 	
 	def home
 		if @users
 			@users = User.where(id: current_user.id)
 		end
-		render :layout => 'home'
 	end
 
 	def account
-		 render :layout => 'account'
+		 # render :layout => 'account'
 		
 	end
 
