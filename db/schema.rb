@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20140521133632) do
     t.datetime "updated_at"
   end
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
@@ -67,7 +74,6 @@ ActiveRecord::Schema.define(version: 20140521133632) do
     t.integer  "remain"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "desc"
     t.string   "photo_1"
     t.string   "photo_2"
     t.string   "photo_3"

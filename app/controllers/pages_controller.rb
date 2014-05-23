@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-	before_filter :authenticate_user!, :except => [:home]
-	before_filter :authenticate_admin!, :except => [:home]
 	
 	def home
 		if @users
