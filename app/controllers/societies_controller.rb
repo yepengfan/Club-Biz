@@ -5,12 +5,12 @@ class SocietiesController < ApplicationController
 
 	def show
 		@society = Society.find(params[:id])
-		render 'show'
 	end
 
 	def new
 		@society = Society.new
 	end
+
 	def edit
 	end
 
@@ -29,16 +29,72 @@ class SocietiesController < ApplicationController
 		# @society = Society.new(society_params)
 		# @society.save
 
-		puts current_user.id
+		# puts current_user.id
+		@society = Society.new
+		@society.upload(society_params)
+		@memberships = Membership.new
+		@memberships.update(@society.id, current_user.id)
 
-		# @society = Society.new
-		# @society.upload(society_params)
-		
 		index
+	end
+
+	def update_bearers
+		@bearer = Bearer.new
+	end
+
+	def create_bearers
+		@bearer = Bearer.new
+		@bearer.update(bearer_params, params)
+		# render 'index'
+		@society = Society.new
+		# render template: "societies/show"
+		show_bearers
+	end
+
+	def show_bearers
+		@society = Society.find(params[:id])
+		# puts @society.id
+		@bearers = Bearer.where(society_id: @society.id )
+		render 'show_bearers'
+	end
+
+	def update_memberships
+		# @memberships = Membership.new
+		@user = User.new
+	end
+
+	def confirm_memberships
+		@user = User.new(user_params)
+		puts "!!!!!!!!!!!!!!!!!!!!"
+		puts user_params
+		render "update_memberships"
+	end
+
+	def my_societies
+		@result = []
+		societies = Membership.where(user_id: current_user.id)
+
+		puts societies.first.society_id
+		societies.each do |f|
+			society = Society.find(f.society_id)
+			puts "!!!!!!!!!"
+			puts society.name
+			@result.push(society)
+		end
 	end
 
 	private
 	def society_params
 		params.require(:society).permit!
+	end
+
+	private
+	def bearer_params
+		params.require(:bearer).permit!
+	end
+
+	private
+	def user_params
+		params.require(:user).permit!
 	end
 end
