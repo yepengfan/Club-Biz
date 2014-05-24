@@ -1,8 +1,63 @@
-<h1>Societies#my_societies</h1>
+<%= render template: 'layouts/account' %>
+<aside class="right-side">                
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            My Society List
+            <small>List of Societies</small>
+        </h1>
+    </section>
 
+<<<<<<< HEAD
 <% @result.each do |society|%>
 <% if society.state > 0 %>
 <%= link_to society.name, controller: "societies", action: "show", id: society.id %>
 <%= link_to "Edit", controller: "societies", action: "edit", id: society.id%><br>
 <% end %>
 <% end %>
+=======
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <div class="box-body table-responsive">
+                        <div id="example2_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <table id="example2" class="table table-bordered table-hover dataTable" aria-describedby="example2_info">
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th style="width: 200px">Society Name</th>
+                                    <th> Society Reg Number</th>
+                                    <th >Show Society Info</th>
+                                    <th >Edit Society Info</th>
+                                    <th >Add Bearers</th>
+                                    <th >Add Members</th>                                   
+                                </tr>
+
+                                <% @result.each do |society|%>
+                                <tr>
+                                    <%= form_for society, :url => confirm_path, method: :post do |f|%>
+                                    <input name = "id" type="hidden" value= <%= society.id %>>
+                                    <td><%= society.id %></td>
+                                    <td><%= society.name %></td>
+                                    <td><%= society.regi_num %></td>                                  
+                                    <td><%= link_to "Show Society", controller: "societies", action: "show", id: society.id %></td>
+                                    <td><%= link_to "Edit Society", controller: "societies", action: "edit", id: society.id %></td>
+                                    <td><%= link_to "Added Bearers", controller: "societies", action: "update_bearers", id: society.id %></td>
+ 
+                                    <td><%= link_to "Added Members", controller: "societies", action: "update_memberships", id: society.id %></td>
+                                    <% end %>
+                                </tr>
+                                
+                                <% end %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box -->
+
+        </div>
+    </section><!-- /.content -->                
+            </aside><!-- /.right-side -->
+>>>>>>> homepage

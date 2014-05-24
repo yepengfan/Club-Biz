@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Societies#show</h1>
 <p>Find me in app/views/societies/show.html.erb</p>
 
@@ -57,3 +58,97 @@
 <br>
 
 <%= link_to "Back", controller: "pages", action: "account" %>
+=======
+<%= render template: 'layouts/account' %>
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Society Info
+            <small></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Society Info</li>
+        </ol>
+    </section>
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h2 class="box-title">Society Information View</h2>
+            </div><!-- /.box-header -->
+
+            <!-- form start -->
+            <div class="box-body">
+
+                <%= form_for @society do |f| %>
+                <div class="box-body">
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Society Name:</label>
+                        <%= @society.name %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Description:</label>
+                        <%= @society.desc %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Registration Number: </label>
+                        <%= @society.regi_num%>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Website:   </label>
+
+                        <%= @society.website%>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <div><label class="text-light-blue">President:   </label></div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                             <%= f.label "President ame",  class: "text-light-blue"%><br/>
+    <%= @society.p_first_name%> <%= @society.p_last_name %>
+                          </div>
+
+                          <div class="col-xs-3">
+
+                            <%= f.label :p_email, 'President Email',  class: "text-light-blue"%><br/>
+    <%= @society.p_email%>
+                        </div>
+                        <div class="col-xs-3">
+
+                            <%= f.label :p_phone, 'President Phone Number',  class: "text-light-blue"%><br/>
+    <%= @society.p_phone%>
+                        </div>
+   
+                    </div>
+
+                </div>
+
+                <div class="callout callout-info">
+                    <div></div><label class="text-light-blue" for="exampleInputFile">Club Images</label></div>
+                    <p class="help-block"></p>
+                    <div class="row">
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_1), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_2), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_3), size: "270x170" %>
+                        </div>
+                    </div>
+                </div><br/><br/>
+
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+</aside>
+>>>>>>> homepage

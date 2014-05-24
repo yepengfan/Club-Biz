@@ -1,24 +1,52 @@
-<h2>Sign up</h2>
+    <body class="bg-black">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+        <div class="form-box" id="login-box">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+            <div class="header">Register New Membership</div>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
+            <form action="../../index.html" method="post">
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <div><%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %></div>
+                        </div>
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+                    <div class="form-group">
+                        <div>
+                                                <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %></div>
+                    </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email%></div>
+                    <div class="form-group">
+                        <div>
+                                                <%= f.email_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "Enter Email"%></div>
+                    </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+                    <div class="form-group">
+                        <div>
+                                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"%></div>
+                        </div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+                    <div class="form-group">
+                        <div>
+                                                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password"%></div>
+                    </div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+                </div>
+                <div class="footer">
+                        <div><%= f.submit "Sign up", class: "btn bg-olive btn-block"%></div>
+                    <% end %>
+                </div>
+                <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+            </form>
+
+            <div class="margin text-center">
+                <span>Register using social networks</span>
+                <br/>
+                <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
+                <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+                <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
+
+            </div>
+        </div>
+    </body>
