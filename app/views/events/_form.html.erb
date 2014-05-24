@@ -5,7 +5,13 @@
 </p>
 <p>
 	<%= f.label :category%>
-	<!-- 	<%= f.select :category, [['Activity_1', 1], ['Activity_2', 2], ['Activity_3', 3]]%> -->
+	<select name = "category">
+		<option value="Social" >Social</option>
+		<option value="Science" >Science</option>
+		<option value="Art" >Art</option>
+		<option value="Entertainment" >Entertainment</option>
+		<option value="Food&Delights" >Food&Delights</option>
+	</select>
 </p>
 <p>
 	<%= f.label :start%>

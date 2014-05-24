@@ -4,7 +4,14 @@ class SocietiesController < ApplicationController
 	end
 
 	def show
+		@results = []
 		@society = Society.find(params[:id])
+		activities = Activity.where("society_id = ?", params[:id])
+		activities.each do |f|
+			event = Event.find(f.event_id)
+			@results.push(event)
+		end
+
 	end
 
 	def new
@@ -83,7 +90,6 @@ class SocietiesController < ApplicationController
 	def update_memberships
 		@memberships = Membership.new
 		@user = User.new
-
 	end
 
 	def confirm_memberships
@@ -107,6 +113,20 @@ class SocietiesController < ApplicationController
 		end
 	end
 
+	def update_events
+		@event = Event.new
+	end
+
+	def confirm_events
+		@event = Event.new
+		@event.upload(event_params, params[:category])
+		puts params[:id]
+		@activity = Activity.new
+		@activity.host_upload(params[:id], @event.id)
+
+		render "update_events"
+	end
+
 	private
 	def society_params
 		params.require(:society).permit!
@@ -120,5 +140,10 @@ class SocietiesController < ApplicationController
 	private
 	def user_params
 		params.require(:user).permit!
+	end
+
+	private
+	def event_params
+		params.require(:event).permit!
 	end
 end

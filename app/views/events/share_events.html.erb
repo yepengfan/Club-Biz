@@ -1,0 +1,6 @@
+<h1>Events#share_events</h1>
+
+<%= form_for @society, url: confirm_share_path  do |f|%>
+<%= f.text_field :name %>
+<%= f.submit "Share Event"%>
+<% end %>

@@ -44,7 +44,16 @@
 </p>
 <% end %>
 
-<%= link_to "Added Bearers", controller: "societies", action: "update_bearers" %><br/>
-<%= link_to "Added Users", controller: "societies", action: "update_memberships" %><br/>
+<%= link_to "Added Bearers", controller: "societies", action: "update_bearers" %><br>
+<%= link_to "Added Users", controller: "societies", action: "update_memberships" %><br>
+<%= link_to "Added Events", controller: "societies", action: "update_events" , id: @society.id %> <br>
+<br>
+<label>Event of Society</label><br>
+<% @results.each do |event|%>
+<%= link_to event.name, controller: "events", action: "show", id: event.id %>
+<%= link_to "Share Event", controller: "events", action: "share_events", id: event.id %><br>
+<% end %>
+<br>
+
 
 <%= link_to "Back", controller: "pages", action: "account" %>

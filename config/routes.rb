@@ -11,7 +11,6 @@ Tweeter::Application.routes.draw do
   get '/applications' => 'admins#show_registrations', as: :show_registrations
   get '/account' => 'pages#account', as: :my_account
 
-
   #societies_controller
   post '/applications' => 'societies#confirm', as: :confirm
   get '/societies/:id/bearers' => 'societies#update_bearers', as: :update_bearers
@@ -23,8 +22,16 @@ Tweeter::Application.routes.draw do
 
   get '/my_societies' => 'societies#my_societies', as: :my_societies
   post '/societies/:id/edit' => 'societies#confirm_edit', as: :confirm_edit_society
+
+  get '/societies/:id/update_events' => 'societies#update_events', as: :update_events
+  post '/societies/:id/confirm_events' => 'societies#confirm_events', as: :confirm_events
+
   #events_controller
   get '/my_events' => 'events#my_events', as: :my_events
+  post '/events/:id/comments' => 'events#add_comments', as: :add_comment
+  post '/events/:id/reserve' => 'events#reserve_tickets', as: :reserve_tickets
+  get '/events/:id/share_events' => 'events#share_events', as: :share_events
+  post '/events/:id/share_events' => 'events#confirm_share', as: :confirm_share
 
   root 'pages#home'
 

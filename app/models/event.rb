@@ -21,4 +21,39 @@ class Event < ActiveRecord::Base
 		end
 	end
 
+	def upload(event_params, category)
+		self.name = event_params[:name]
+		self.category = category
+		self.start = event_params[:start]
+		self.end = event_params[:end]
+		self.total = event_params[:total]
+		self.remain = event_params[:total]
+		self.desc = event_params[:desc]
+
+		if event_params[:photo_1]
+			uploaded_io = event_params[:photo_1]
+			File.open(Rails.root.join('app', 'assets', 'upload', event_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+
+			self.photo_1 = event_params[:name] +'_'+uploaded_io.original_filename
+		end
+
+		if event_params[:photo_2]
+			uploaded_io = event_params[:photo_2]
+			File.open(Rails.root.join('app', 'assets', 'upload', event_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+			self.photo_2 = event_params[:name] +'_'+uploaded_io.original_filename
+		end
+
+		if event_params[:photo_3]
+			uploaded_io = event_params[:photo_3]
+			File.open(Rails.root.join('app', 'assets', 'upload', event_params[:name] +'_'+ uploaded_io.original_filename), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+			self.photo_3 = event_params[:name] +'_'+uploaded_io.original_filename
+		end
+		self.save
+	end
 end

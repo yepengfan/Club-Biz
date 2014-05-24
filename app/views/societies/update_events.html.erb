@@ -1,0 +1,43 @@
+<h1>Societies#new_event</h1>
+
+<%= form_for @event, url: confirm_events_path, :html => { :multipart => true } do |f| %>
+<p>
+	<%= f.label :name%>
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= f.label :category%>
+	<%= select_tag "category", options_for_select(["Social", "Science", "Art", "Entertainment","Food&Delights"])%>
+</p>
+<p>
+	<%= f.label :start%>
+	<%= f.text_field :start%>
+</p>
+<p>
+	<%= f.label :end%>
+	<%= f.text_field :end%>
+</p>
+<p>
+	<%= f.label :total%>
+	<%= f.text_field :total%>
+</p>
+<p>
+	<%= f.label :desc%>
+	<%= f.text_area :desc, :cols => 20, :rows => 10 %>
+</p>
+<p>
+	<%= f.label :photo_1%>
+	<%= f.file_field :photo_1%>
+</p>
+<p>
+	<%= f.label :photo_2%>
+	<%= f.file_field :photo_2%>
+</p>
+<p>
+	<%= f.label :photo_3%>
+	<%= f.file_field :photo_3%>
+</p>
+<p>
+	<%= f.submit "Submit" %>
+</p>
+<% end %>
