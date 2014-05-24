@@ -1,5 +1,6 @@
 <h1>Societies#show</h1>
 <p>Find me in app/views/societies/show.html.erb</p>
+
 <%= form_for @society do |f|%>
 <p>
 	<%= f.label :name, 'Name'%>
@@ -54,6 +55,5 @@
 <%= link_to "Share Event", controller: "events", action: "share_events", id: event.id %><br>
 <% end %>
 <br>
-
 
 <%= link_to "Back", controller: "pages", action: "account" %>

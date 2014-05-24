@@ -1,6 +1,8 @@
 <h1>Societies#my_societies</h1>
 
 <% @result.each do |society|%>
+<% if society.state > 0 %>
 <%= link_to society.name, controller: "societies", action: "show", id: society.id %>
 <%= link_to "Edit", controller: "societies", action: "edit", id: society.id%><br>
+<% end %>
 <% end %>
