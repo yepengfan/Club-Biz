@@ -1,6 +1,7 @@
-<h1>Societies#new</h1>
-<p>Find me in app/views/societies/new.html.erb</p>
-<!-- 
-<%= form_for @society, :url => societies_path, :html => { :multipart => true } do |form| %> -->
+<%= render template: 'layouts/account' %>
+
+<%= form_for @society, :url => societies_path, :html => { :multipart => true } do |form| %>
 <%= render form %>
 <% end %>
+
+

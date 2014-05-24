@@ -1,50 +1,92 @@
-<h1>Societies#show</h1>
-<p>Find me in app/views/societies/show.html.erb</p>
-<%= form_for @society do |f|%>
-<p>
-	<%= f.label :name, 'Name'%>
-	<%= @society.name %>
-</p>
-<p>
-	<%= f.label :desc, 'Description'%>
-	<%= @society.desc %>
-</p>
-<p>
-	<%= f.label :regi_num, 'Registration Number' %>
-	<%= @society.regi_num%>
-</p>
-<p>
-	<%= f.label :website, 'Website'%>
-	<%= @society.website%>
-</p>
+<%= render template: 'layouts/account' %>
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Society Info
+            <small></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Society Info</li>
+        </ol>
+    </section>
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h2 class="box-title">Society Information View</h2>
+            </div><!-- /.box-header -->
 
-<p>
-	<%= f.label "President"%>
-	<%= @society.p_first_name%> <%= @society.p_last_name %>
-</p>
-<p>
-	<%= f.label :p_phone, 'President Phone Number'%>
-	<%= @society.p_phone%>
-</p>
-<p>
-	<%= f.label :p_email, 'President Email'%>
-	<%= @society.p_email%>
-</p>
-<p>
-	<%= f.label :photo_1, 'Society Photo 1'%>
-	<%= image_tag (@society.photo_1), size: "160x100" %>
-</p>
-<p>
-	<%= f.label :photo_2, 'Society Photo 2'%>
-	<%= image_tag (@society.photo_2), size: "160x100" %>
-</p>
-<p>
-	<%= f.label :photo_3, 'Society Photo 3'%>
-	<%= image_tag (@society.photo_3), size: "160x100" %>
-</p>
-<% end %>
+            <!-- form start -->
+            <div class="box-body">
 
-<%= link_to "Added Bearers", controller: "societies", action: "update_bearers" %><br/>
-<%= link_to "Added Users", controller: "societies", action: "update_memberships" %><br/>
+                <%= form_for @society do |f| %>
+                <div class="box-body">
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Society Name:</label>
+                        <%= @society.name %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Description:</label>
+                        <%= @society.desc %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Registration Number: </label>
+                        <%= @society.regi_num%>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Website:   </label>
 
-<%= link_to "Back", controller: "pages", action: "account" %>
+                        <%= @society.website%>
+                    </div>
+
+                    <div class="callout callout-info">
+                        <div><label class="text-light-blue">President:   </label></div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                             <%= f.label "President ame",  class: "text-light-blue"%><br/>
+    <%= @society.p_first_name%> <%= @society.p_last_name %>
+                          </div>
+
+                          <div class="col-xs-3">
+
+                            <%= f.label :p_email, 'President Email',  class: "text-light-blue"%><br/>
+    <%= @society.p_email%>
+                        </div>
+                        <div class="col-xs-3">
+
+                            <%= f.label :p_phone, 'President Phone Number',  class: "text-light-blue"%><br/>
+    <%= @society.p_phone%>
+                        </div>
+   
+                    </div>
+
+                </div>
+
+                <div class="callout callout-info">
+                    <div></div><label class="text-light-blue" for="exampleInputFile">Club Images</label></div>
+                    <p class="help-block"></p>
+                    <div class="row">
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_1), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_2), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@society.photo_3), size: "270x170" %>
+                        </div>
+                    </div>
+                </div><br/><br/>
+
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+</aside>

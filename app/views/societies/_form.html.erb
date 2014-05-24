@@ -1,51 +1,101 @@
-<%= form_for @society, :html => { :multipart => true } do |f| %>
-<p>
-	<%= f.label :name, 'Name'%>
-	<%= f.text_field :name %>
-</p>
-<p>
-	<%= f.label :desc, 'Description'%>
-	<%= f.text_area :desc, :cols => 20, :rows => 10 %>
-</p>
-<p>
-	<%= f.label :regi_num, 'Registration Number' %>
-	<%= f.text_field :regi_num%>
-</p>
-<p>
-	<%= f.label :website, 'Website'%>
-	<%= f.text_field :website%>
-</p>
-<p>
-	<%= f.label :p_first_name, 'President First Name' %>
-	<%= f.text_field :p_first_name%>
-</p>
-<p>
-	<%= f.label :p_last_name, 'President Last Name'%>
-	<%= f.text_field :p_last_name%>
-</p>
+<!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Society Registration
+                    <small>Please enter society information</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Society Registration</li>
+                </ol>
+            </section>
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h2 class="box-title">Register A New Society</h2>
+            </div><!-- /.box-header -->
 
-<p>
-	<%= f.label :p_phone, 'President Phone Number'%>
-	<%= f.text_field :p_phone%>
-</p>
-<p>
-	<%= f.label :p_email, 'President Email'%>
-	<%= f.text_field :p_email%>
-</p>
-<p>
-	<%= f.label :photo_1, 'Society Photo 1'%>
-	<%= f.file_field :photo_1 %>
-</p>
-<p>
-	<%= f.label :photo_2, 'Society Photo 2'%>
-	<%= f.file_field :photo_2 %>
-</p>
-<p>
-	<%= f.label :photo_3, 'Society Photo 3'%>
-	<%= f.file_field :photo_3 %>
-</p>
+            <!-- form start -->
+            <div class="box-body">
+                
+                <%= form_for @society, :html => { :multipart => true } do |f| %>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Society Name</label>
+                            <%= f.text_field :name, class:"form-control", placeholder: "Enter Society Name"%>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <%= f.text_area :desc, :rows => 5, class: "form-control", placeholder:"Enter the Society Description" %>
+                        </div>
+                        <div class="form-group">
+                            <label>Registration Number</label>
+    
+                            <%= f.text_field :regi_num, class: "form-control", placeholder: "Enter the Registration Number given by Society UniAdmin" %>
+                        </div>
+                        <div class="form-group">
+                            <label>Website</label>
+                            
+                            <%= f.text_field :website, class: "form-control", placeholder: "Enter the url of website" %>
+                        </div>
 
-<p>
-	<%= f.submit "Submit"%>
-</p>
-<% end %>
+                        <div class="form-group">
+                            <div><label>President</label></div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                  <%= f.text_field :p_first_name, class: "form-control", placeholder: "First Name" %>  
+                                </div>
+                                
+                                <div class="col-xs-3">
+                                    
+                                    <%= f.text_field :p_last_name, class: "form-control", placeholder: "Last Name" %>
+                                </div>
+                                <div class="col-xs-3">
+                                   
+                                    <%= f.text_field :p_email, class: "form-control", placeholder: "Email" %>
+                                </div>
+                                <div class="col-xs-3">
+                                    
+                                    <%= f.text_field :p_phone, class: "form-control", placeholder: "Phone" %>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div></div><label for="exampleInputFile">Upload Club Images</label></div>
+                            <p class="help-block">The image size should be up to 2 MB.</p>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    
+                                    <%= f.file_field :photo_1 %>
+                                </div>
+                                <div class="col-xs-4">
+                                    
+                                    <%= f.file_field :photo_2 %>
+                                </div>
+                                <div class="col-xs-4">
+                                    
+                                    <%= f.file_field :photo_3 %>
+                                </div>
+                            </div>
+                        </div><br/><br/>
+
+                        <div>
+                            <div class="row" >
+                                <div class="col-xs-3"></div>
+                                <div class="col-xs-6">
+                                    <%= f.submit "Submit", class: "btn btn-success btn-lg btn-block"%>
+                                </div>
+                                <div class="col-xs-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+        </div>
+    </aside>

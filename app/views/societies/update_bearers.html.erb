@@ -1,13 +1,60 @@
-<h1>Societies#bearers</h1>
+<%= render template: 'layouts/account' %>
+<aside class="right-side">                
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Add A Bearer
+            <small>Enter bearer's information</small>
+        </h1>
+    </section>
 
-<%= form_for @bearer, :url => confirm_bearers_path do |f|%>
-<%= f.label :first_name, "First Name"%>
-<%= f.text_field :first_name%> <br/>
-<%= f.label :last_name, "Last Name"%>
-<%= f.text_field :last_name%><br/>
-<%= f.label :phone, "Phone"%>
-<%= f.text_field :phone %><br/>
-<%= f.label :email, "Email"%>
-<%= f.text_field :email%><br/>
-<%= f.submit "Confirm"%>
-<% end %>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+
+                    <%= form_for @bearer, :url => confirm_bearers_path do |f|%>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <%= f.text_field :first_name, class:"form-control", placeholder: "Enter First Name"%>
+                        </div>
+                        <div class="form-group">
+                            <label>Last name</label>
+                            <%= f.text_field :last_name, class: "form-control", placeholder:"Enter Last Name" %>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+
+                            <%= f.text_field :phone, class: "form-control", placeholder: "Enter Phone Number" %>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            
+                            <%= f.text_field :email, class: "form-control", placeholder: "Enter the url of website" %>
+                        </div>
+                        <div>
+                            <div class="row" >
+                                <div class="col-xs-4"></div>
+                              
+                                
+                                <div class="col-xs-4">
+                                    <%= f.submit "Submit", class: "btn btn-success btn-lg btn-block"%>
+                                </div>
+                                <div class="col-xs-4"></div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+
+                </div>
+            </div><!-- /.box -->
+
+        </div>
+    </section><!-- /.content --> 
+    
+            </aside><!-- /.right-side -->
