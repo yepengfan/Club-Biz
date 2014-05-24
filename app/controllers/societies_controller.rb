@@ -28,12 +28,20 @@ class SocietiesController < ApplicationController
 	end
 
 	def confirm
-		# @society = Society.find(params[:id])
-		# @society.state = params[:state]
-		puts params[:state]
+		@society = Society.find(params[:id])
+		@society.state = params[:state]
+		@membership = Membership.where("society_id = ? AND auth = ?", params[:id], 2 ).first
+		
 
+		user_id = @membership.user_id
+		@user = User.find(user_id)
 
-		# @society.save
+		if params[:state] == "1"
+			UserMailer.confirm_society_email(@user).deliver
+		elsif params[:state] == "2"
+			UserMailer.deny_society_email(@user).deliver
+		end
+		@society.save
 		
 		redirect_to show_registrations_path
 	end
