@@ -3,5 +3,6 @@ class AdminsController < ApplicationController
 
 	def show_registrations
 		@societies = Society.all
+		render :layout => 'account'
 	end
 end

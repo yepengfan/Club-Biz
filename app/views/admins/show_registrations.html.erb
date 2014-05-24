@@ -1,31 +1,82 @@
-<h1>Admins#show_registrations</h1>
-<p>Find me in app/views/admins/show_registrations.html.erb</p>
+<aside class="right-side">                
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Society Registration Confirmation
+            <small>List of Societies</small>
+        </h1>
+    </section>
 
-<div class="container">
-	<% @societies.each do |society| %>
-	<%= form_for society, :url => confirm_path, method: :post do |f|%>
-	<label>Name</label>	<%= society.name %> <label>Registration Number</label>	<%= society.regi_num%> 
-	<input name = "id" type="hidden" value= <%= society.id %>>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Bordered Table</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Society Name</th>
+                            <th>Registration Number</th>
+                            <th style="width: 140px">Operation</th>
+                            <th>Confirmation</th>
+                            <th>Status</th>
+                        </tr>
+                        <% @societies.each do |society| %>
+                        
+                        <tr>
+                            <%= form_for society, :url => confirm_path, method: :post do |f|%>
+                            <input name = "id" type="hidden" value= <%= society.id %>>
+                            <td><%= society.id %></td>
+                            <td><%= society.name %></td>
+                            <td><%= society.regi_num%></td>
+                            <td>
+                                <select name = "state" class="form-control">
+                                    <% if society.state == 0%>
+                                    <option value="0" selected>To be confirmd</option>
+                                    <option value="1" >Confirming</option>
+                                    <option value="2" >Denying</option>
+                                    <% elsif society.state == 1%>
+                                    <option value="0" >To be confirmd</option>
+                                    <option value="1" selected>Confirming</option>
+                                    <option value="2" >Denying</option>
+                                    <% elsif society.state ==2 %>
+                                    <option value="0" >To be confirmd</option>
+                                    <option value="1" >Confirming</option>
+                                    <option value="2" selected >Denying</option>
+                                    <% end %>
+                                </select>
+                            </td>
+                            <td><%= f.submit "Process", :class=> "btn btn-primary"%></td>
+                            <td>
+                                <% if society.state == 0%>
+                                <span class="label label-warning">To be confirmd</span>
+                                <% elsif society.state == 1%>
+                                <span class="label label-success">Confirmed</span>
+                                <% elsif society.state ==2 %>
+                                <span class="label label-danger">Denied</span>
+                                <% end %>
+                            </td>
+                            <% end %>
+                        </tr>
+                        
+                        <% end %>                            
+                    </table>
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div><!-- /.box -->
 
-	<select name = "state">
-		<% if society.state == 0%>
-		<option value="0" selected>Not Permited</option>
-		<option value="1" >Running</option>
-		<option value="2" >Hang out</option>
-		<% elsif society.state == 1%>
-		<option value="0" >Not Permited</option>
-		<option value="1" selected>Running</option>
-		<option value="2" >Hang out</option>
-		<% elsif society.state ==2 %>
-		<option value="0" >Not Permited</option>
-		<option value="1" >Running</option>
-		<option value="2" selected >Hang out</option>
-		<% end %>
-	</select> 
-	<%= f.submit "confirm"%>
-	<% end %>
-	<% end %>
-</br>
-
-
-</div>
+        </div>
+    </section><!-- /.content -->                
+            </aside><!-- /.right-side -->

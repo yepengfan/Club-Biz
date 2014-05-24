@@ -1,0 +1,71 @@
+  <header class="header">
+    <a> 
+      <!-- Add the class icon to your logo image or logo icon to add the margining -->
+      <%= link_to "Club-Biz", root_path, class: "logo" %>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              <i class="glyphicon glyphicon-user"></i>
+              <% if user_signed_in? %>
+              <span><%= current_user.full_name %></span>                           
+              <% elsif admin_signed_in?%>
+              <span><%= current_admin.email %></span>
+              <% end %>
+              <i class="caret"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header bg-light-blue">
+                <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                <p>
+                  <% if user_signed_in? %>
+                  <li><%= current_user.full_name %></li>                             
+                  <% elsif admin_signed_in?%>
+                  <li><%= current_admin.email %></li>
+                  <% end %>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="col-xs-12 text-center">
+                  <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_account_path, class: "btn btn-info" %><% end %></a>
+                </div>
+              </li>
+              <!-- Menu Footer-->
+
+              <li class="user-footer">
+                <div class="pull-left">
+                  <% if user_signed_in? %>
+                  <a><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default btn-flat" %></a>
+                  <% elsif admin_signed_in?%>
+                  <a><%= link_to "Edit Profile", edit_admin_registration_path, class: "btn btn-default btn-flat" %></a>
+                  <% else %>
+                  <%= link_to "Register", new_user_registration_path, class: "btn btn-default btn-flat"  %>
+                  <% end %>
+                </div>
+                <div class="pull-right">
+                  <% if user_signed_in? %>
+                  <a><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-flat"%></a>
+                  <% elsif admin_signed_in?%>
+                  <a><%= link_to "Sign Out", destroy_admin_session_path, method: :delete, class: "btn btn-default btn-flat" %></a>
+                  <% else %>
+                  <a><%= link_to "Sign In", new_user_session_path, class: "btn btn-default btn-flat" %>
+                  </a>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+

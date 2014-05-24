@@ -1,0 +1,29 @@
+<h1>Admins#show_registrations</h1>
+<p>Find me in app/views/admins/show_registrations.html.erb</p>
+
+<div class="container">
+	<% @societies.each do |society| %>
+	<%= form_for society, :url => confirm_path, method: :post do |f|%>
+	<label>Name</label>	<%= society.name %> <label>Registration Number</label>	<%= society.regi_num%> 
+	<input name = "id" type="hidden" value= <%= society.id %>>
+
+	<select name = "state">
+		<% if society.state == 0%>
+		<option value="0" selected>Not Permited</option>
+		<option value="1" >Running</option>
+		<option value="2" >Hang out</option>
+		<% elsif society.state == 1%>
+		<option value="0" >Not Permited</option>
+		<option value="1" selected>Running</option>
+		<option value="2" >Hang out</option>
+		<% elsif society.state ==2 %>
+		<option value="0" >Not Permited</option>
+		<option value="1" >Running</option>
+		<option value="2" selected >Hang out</option>
+		<% end %>
+	</select> 
+	<%= f.submit "confirm"%>
+	<% end %>
+	<% end %>
+</br>
+</div>
