@@ -3,6 +3,7 @@
 <head>
 
   <title>Club-Biz Admin</title>
+
 </head>
 <body class="skin-blue">
 
@@ -51,7 +52,7 @@
                 <!-- Menu Body -->
                 <li class="user-body">
                   <div class="col-xs-12 text-center">
-                    <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_account_path, class: "btn btn-info" %><% end %></a>
+                    <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_account_path, class: "btn btn-default" %><% end %></a>
                 </div>
             </li>
             <!-- Menu Footer-->
@@ -124,28 +125,28 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="active">
-                        <a >
-                            <i class="fa fa-dashboard"></i> <span>My Booking</span>
+                    <li class="active" >
+                        <a>
+                           <div height="46px"><i class="fa fa-dashboard"></i><span ><%= link_to "My Booking"%></span></div>
                         </a>
                     </li>
                     <li>
-                        <a >
-                            <i class="fa fa-th"></i> <span>My Society</span> 
+                        <a>
+                            <i class="fa fa-th"></i><span><%= link_to "My Society", controller: "societies", action: "my_societies" %></span> 
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="fa fa-th"></i> <span>Edit Profile</span> 
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="fa fa-th"></i> <span>Register Society</span> 
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="fa fa-th"></i> <span>Register Event</span> 
                         </a>
                     </li>
