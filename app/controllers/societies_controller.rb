@@ -73,14 +73,16 @@ class SocietiesController < ApplicationController
 	end
 
 	def update_memberships
-		# @memberships = Membership.new
+		@memberships = Membership.new
 		@user = User.new
+
 	end
 
 	def confirm_memberships
 		@user = User.new(user_params)
-		puts "!!!!!!!!!!!!!!!!!!!!"
-		puts user_params
+		@user.save
+		@memberships = Membership.new
+		@memberships.add_user(params[:id], @user.id, params[:auth])
 		render "update_memberships"
 	end
 

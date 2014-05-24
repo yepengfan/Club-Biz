@@ -1,0 +1,10 @@
+<h1>Societies#show_members</h1>
+
+<% @members.each do |member|%>
+<form>
+First name: <%= member.first_name%><br>
+Last name: <%= member.last_name%><br>
+Phone: <%= member.phone%>
+Email: <%= member.email%>
+</form> 
+<% end %>
