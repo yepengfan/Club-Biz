@@ -4,11 +4,6 @@ class EventsController < ApplicationController
 
 	end
 
-	def new
-		@event = Event.new
-		puts params[:society_id]
-	end 
-
 	def show
 		@event = Event.find(params[:id])
 		@comment = Comment.new
