@@ -48,10 +48,11 @@ class EventsController < ApplicationController
 
 	def reserve_tickets
 		@reservation = Reservation.new
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		puts current_user.id
-		puts params[:id]
 		@reservation.upload(params[:id], current_user.id, params[:amount])
+		@event = Event.find(params[:id])
+		remain = @event.remain - params[:amount].to_i
+		@event.remain = remain
+		@event.save
 		show
 	end
 
