@@ -4,14 +4,14 @@ class SocietiesController < ApplicationController
 	end
 
 	def show
-		@results = []
 		@society = Society.find(params[:id])
+
+		@results = []
 		activities = Activity.where("society_id = ?", params[:id])
 		activities.each do |f|
 			event = Event.find(f.event_id)
 			@results.push(event)
 		end
-
 	end
 
 	def new
