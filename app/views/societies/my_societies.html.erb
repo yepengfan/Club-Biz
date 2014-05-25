@@ -12,7 +12,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-
+<div class="box-header">
+                <h2 class="box-title">Please select a society to process</h2>
+            </div><!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline" role="grid">
                             <table id="example2" class="table table-bordered table-hover dataTable" aria-describedby="example2_info">
@@ -21,10 +23,15 @@
                                     <th style="width: 200px">Society Name</th>
                                     <th> Society Reg Number</th>
                                     <th >Show Society Info</th>
+                                    <% if current_user.admin == true %>
                                     <th >Edit Society Info</th>
                                     <th >Add Bearers</th>
-                                    <th >Add Members</th> 
-                                    <th >Show All Events</th>                                   
+                                    <th >Add Members</th>
+                                    <% end %> 
+                                    <th >Show All Events</th> 
+                                    <% if current_user.admin == true %>
+                                    <th >Add Events</th>   
+                                    <% end %>                                 
                                 </tr>
 
                                 <% @result.each do |society|%>
@@ -34,13 +41,19 @@
                                     <input name = "id" type="hidden" value= <%= society.id %>>
                                     <td><%= society.id %></td>
                                     <td><%= society.name %></td>
-                                    <td><%= society.regi_num %></td>                                  
+                                    <td><%= society.regi_num %></td>                                
                                     <td><%= link_to "Show Society", controller: "societies", action: "show", id: society.id %></td>
+                                    <% if current_user.admin == true %>
                                     <td><%= link_to "Edit Society", controller: "societies", action: "edit", id: society.id %></td>
+                                    
                                     <td><%= link_to "Added Bearers", controller: "societies", action: "update_bearers", id: society.id %></td>
  
                                     <td><%= link_to "Added Members", controller: "societies", action: "update_memberships", id: society.id %></td>
+                                    <% end %>
                                     <td><%= link_to "Show all events", controller: "societies", action: "list_events", id: society.id %></td>
+                                    <% if current_user.admin == true %>
+                                    <td><%= link_to "Add events", controller: "societies", action: "update_events", id: society.id %></td>
+                                     <% end %>
                                     <% end %>
                                 </tr>
                                 <% end %>

@@ -36,7 +36,7 @@
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="col-xs-12 text-center" >
-                  <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_account_path, class: "btn btn-default" %><% end %></a>
+                  <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_events_path, class: "btn btn-default" %><% end %></a>
                 </div>
               </li>
               <!-- Menu Footer-->
@@ -68,9 +68,9 @@
       </div>
 
     </nav>
- <div class="col-xs-4" align="center" >
+ <div class="col-xs-3" align="center" >
     </div>
-    <div class="col-xs-4" align="center" >
+    <div class="col-xs-6" align="center" >
       <ul class="nav navbar-nav">
         <div class="user-panel" width="500 px">
           <%= form_tag search_input_path, :class => "sidebar-form", :method => 'post' do %>
@@ -84,7 +84,7 @@
         </div>
       </ul>
     </div>
-    <div class="col-xs-4" align="center" >
+    <div class="col-xs-3" align="center" >
   </div>
   </header>
 

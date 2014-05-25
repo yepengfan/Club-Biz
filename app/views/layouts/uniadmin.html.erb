@@ -53,7 +53,7 @@
                 <!-- Menu Body -->
                 <li class="user-body">
                   <div class="col-xs-12 text-center">
-                    <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_events_path, class: "btn btn-default" %><% end %></a>
+                    <a> <% if user_signed_in? %><%= link_to "Go To My Account", my_account_path, class: "btn btn-default" %><% end %></a>
                 </div>
             </li>
             <!-- Menu Footer-->
@@ -64,8 +64,6 @@
                 <a><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default btn-flat" %></a>
                 <% elsif admin_signed_in?%>
                 <a><%= link_to "Edit Profile", edit_admin_registration_path, class: "btn btn-default btn-flat"  %></a>
-                <% else %>
-                <a><%= link_to "Register", new_user_registration_path , class: "btn btn-default btn-flat"%></a>
                 <% end %>
             </div>
             <div class="pull-right">
@@ -128,14 +126,9 @@
                 <ul class="sidebar-menu">
                     <li class="active" style="padding:15px">
                         
-                           <i class="fa fa-heart-o"></i><span style="padding:15px"><%= link_to "My Booking", controller: "events", action: "my_events"%></span>
+                           <i class="fa fa-key"></i><span style="padding:15px"><%= link_to "Reg Confirmation", controller: "admins", action: "show_registrations"%></span>
                     
-                    </li>
-                    <li style="padding:15px">
-                        
-                            <i class="fa fa-flag-checkered"></i><span style="padding:15px"><%= link_to "My Society", controller: "societies", action: "my_societies" %></span> 
-                        
-                    </li>
+                   
                     <li style="padding:15px">
               
                             <i class="fa fa-edit"></i><span style="padding:10px"><% if user_signed_in? %>
@@ -145,28 +138,6 @@
                      <% end %>
                     </li>
 
-                    <li style="padding:15px">
-                      
-                            <i class="fa fa-plus-square"></i><span style="padding:15px"><%= link_to "Register Society", controller: "societies", action:"new" %></span> 
-                     
-                    </li>
-                   <!--  <li style="padding:15px">
-                  
-                            <i class="fa fa-pencil"></i><span style="padding:15px"><%= link_to "Edit Society" %></span>
-                     
-                    </li> -->
-                    <% if current_user.admin == true %>
-                    <li style="padding:15px">
-                   
-                            <i class="fa fa-plus"></i><span style="padding:15px"><%= link_to "Create Event", controller: "societies", action:"my_societies" %></span> 
-                
-                    </li>
-                    <% end %>
-<!--                     <li style="padding:15px">
-                   
-                            <i class="fa fa-refresh"></i><span style="padding:15px"><%= link_to "Update Event" %> </span> 
-                
-                    </li> -->
 
 
                 </ul>

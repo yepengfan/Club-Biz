@@ -1,52 +1,67 @@
-<%= form_for @event, url: reserve_tickets_path, method: :post do |f|%>
-<p>
-	<%= f.label :name, 'Name'%>
-	<%= @event.name %>
-</p>
-<p>
-	<%= f.label :desc, 'Description'%>
-	<%= @event.desc %>
-</p>
+<%= render template: 'layouts/account' %>
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Event Infor
+            <small></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li class="active">Event Info</li>
+        </ol>
+    </section>
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h2 class="box-title">Event Information View</h2>
+            </div><!-- /.box-header -->
+<div class="box-body">
+                <%= form_for @event, url: reserve_tickets_path, method: :post do |f|%>
+                <div class="box-body">
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Event Name:</label>
+                        <%= @event.name %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Description:</label>
+                        <%= @event.desc %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">Start Time:</label>
+                        <%= @event.start %>
+                    </div>
+                    <div class="callout callout-info">
+                        <label class="text-light-blue">End Time:</label>
+                        <%= @event.end %>
+                    </div>
+                
 
-<p>
-	<%= f.label :photo_1, 'Event Photo 1'%>
-	<%= image_tag (@event.photo_1), size: "160x100" %>
-</p>
-<p>
-	<%= f.label :photo_2, 'Event Photo 2'%>
-	<%= image_tag (@event.photo_2), size: "160x100" %>
-</p>
-<p>
-	<%= f.label :photo_3, 'Event Photo 3'%>
-	<%= image_tag (@event.photo_3), size: "160x100" %>
-</p>
+                <div class="callout callout-info">
+                    <div></div><label class="text-light-blue" for="exampleInputFile">Event Images</label></div>
+                    <p class="help-block"></p>
+                    <div class="row">
+                        <div class="col-xs-4">
 
-<p>
-	<%= f.label :remain, "Remain Tickets"%>
-	<%= @event.remain%> 
-	<% if @event.remain == 3 %>
-	<%= select_tag "amount", options_for_select(["1", "2", "3"])%>
-	<% elsif @event.remain == 2 %>
-	<%= select_tag "amount", options_for_select(["1", "2"])%>
-	<% elsif  @event.remain == 1 %>
-	<%= select_tag "amount", options_for_select(["1"])%>
-	<% elsif @event.remain == 0%>
-	<%= select_tag "amount", options_for_select(["0"])%>
-	<% else %>
-	<%= select_tag "amount", options_for_select(["1", "2", "3", "4"])%>
-	<% end %>
-	<%= f.submit "Reserve Tickets"%>
-</p>
-<% end %>
-<label>Events Comments</label><br>
-<% @comments.each do |f|%>
-<%= f.content %><br>
-<% end %>
-<br><br><br>
+                            <%= image_tag (@event.photo_1), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
 
-<%= form_for @comment, url: add_comment_path do |f| %>
-<%= f.label :content, "Comments"%>
-<%= f.text_area :content, size: "30x20" %><br>
-<%= f.submit "Submit Comments"%>
-<% end %>
-<%= link_to "Back", controller: "pages", action: "account" %>
+                            <%= image_tag (@event.photo_2), size: "270x170" %>
+                        </div>
+                        <div class="col-xs-4">
+
+                            <%= image_tag (@event.photo_3), size: "270x170" %>
+                        </div>
+                    </div>
+                </div>
+                </div><br/><br/>
+            <% end %>
+            <div class="box-body">
+            </div>
+        </div>
+    </div>
+</aside>
+

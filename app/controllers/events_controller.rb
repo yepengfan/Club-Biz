@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+
 	def index
 
 	end
@@ -13,6 +14,12 @@ class EventsController < ApplicationController
 		@comment = Comment.new
 		@comments = Comment.where("event_id = ?", params[:id])
 		render 'show'
+	end
+	def reserve_event
+		@event = Event.find(params[:id])
+		@comment = Comment.new
+		@comments = Comment.where("event_id = ?", params[:id])
+		
 	end
 
 	def share_events
@@ -40,6 +47,7 @@ class EventsController < ApplicationController
 		end
 	end
 
+
 	def add_comments
 		@comment = Comment.new
 		@comment.upload(params[:id], current_user.id, comment_params[:content])
@@ -52,7 +60,7 @@ class EventsController < ApplicationController
 		puts current_user.id
 		puts params[:id]
 		@reservation.upload(params[:id], current_user.id, params[:amount])
-		show
+		redirect_to my_events_path
 	end
 
 	private

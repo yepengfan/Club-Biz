@@ -33,7 +33,8 @@ Tweeter::Application.routes.draw do
   post '/events/:id/reserve' => 'events#reserve_tickets', as: :reserve_tickets
   get '/events/:id/share_events' => 'events#share_events', as: :share_events
   post '/events/:id/share_events' => 'events#confirm_share', as: :confirm_share
+  get '/events/:id/reserve_event' => 'events#reserve_event', as: :reserve_event
 
-  root 'pages#home'
+  root 'pages#list_all_events'
 
 end

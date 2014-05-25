@@ -12,6 +12,10 @@ class PagesController < ApplicationController
 		
 	end
 
+	def list_all_events
+		@events = Event.all
+	end
+
 	def search
 		@societies = Society.search(params[:search_input])
 		@events = Event.search(params[:search_input])

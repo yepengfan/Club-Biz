@@ -63,10 +63,14 @@ class SocietiesController < ApplicationController
 		@society = Society.new
 		@society.upload(society_params)
 
+		@user = User.find(current_user.id)
+		@user.admin = true
+		@user.save
+
 		@memberships = Membership.new
 		@memberships.admin_update(@society.id, current_user.id)
 
-		index
+		redirect_to my_account_path
 	end
 
 	def update_bearers
@@ -96,6 +100,7 @@ class SocietiesController < ApplicationController
 
 	def confirm_memberships
 		@user = User.new(user_params)
+		@user.admin = true
 		@user.save
 		@memberships = Membership.new
 		@memberships.add_user(params[:id], @user.id, params[:auth])
