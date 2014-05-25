@@ -7,15 +7,6 @@
             <small>List of Societies</small>
         </h1>
     </section>
-
-<<<<<<< HEAD
-<% @result.each do |society|%>
-<% if society.state > 0 %>
-<%= link_to society.name, controller: "societies", action: "show", id: society.id %>
-<%= link_to "Edit", controller: "societies", action: "edit", id: society.id%><br>
-<% end %>
-<% end %>
-=======
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -32,10 +23,12 @@
                                     <th >Show Society Info</th>
                                     <th >Edit Society Info</th>
                                     <th >Add Bearers</th>
-                                    <th >Add Members</th>                                   
+                                    <th >Add Members</th> 
+                                    <th >Show All Events</th>                                   
                                 </tr>
 
                                 <% @result.each do |society|%>
+                                <% if society.state > 0 %>
                                 <tr>
                                     <%= form_for society, :url => confirm_path, method: :post do |f|%>
                                     <input name = "id" type="hidden" value= <%= society.id %>>
@@ -47,9 +40,10 @@
                                     <td><%= link_to "Added Bearers", controller: "societies", action: "update_bearers", id: society.id %></td>
  
                                     <td><%= link_to "Added Members", controller: "societies", action: "update_memberships", id: society.id %></td>
+                                    <td><%= link_to "Show all events", controller: "societies", action: "list_events", id: society.id %></td>
                                     <% end %>
                                 </tr>
-                                
+                                <% end %>
                                 <% end %>
                             </table>
                         </div>
@@ -60,4 +54,4 @@
         </div>
     </section><!-- /.content -->                
             </aside><!-- /.right-side -->
->>>>>>> homepage
+

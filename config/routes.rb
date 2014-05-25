@@ -19,6 +19,7 @@ Tweeter::Application.routes.draw do
   get '/societies/:id/memberships' => 'societies#update_memberships', as: :update_memberships
   post '/societies/:id/memberships' => 'societies#confirm_memberships', as: :confirm_memberships
   get '/societies/:id/show_members' => 'societies#show_memberships', as: :show_members
+  get '/societies/:id/list_events' => 'societies#list_events', as: :list_events
 
   get '/my_societies' => 'societies#my_societies', as: :my_societies
   post '/societies/:id/edit' => 'societies#confirm_edit', as: :confirm_edit_society

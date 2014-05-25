@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521133632) do
+ActiveRecord::Schema.define(version: 20140525053806) do
 
   create_table "activities", force: true do |t|
     t.integer  "society_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140521133632) do
     t.string   "photo_1"
     t.string   "photo_2"
     t.string   "photo_3"
+    t.string   "desc"
   end
 
   create_table "memberships", force: true do |t|

@@ -1,0 +1,53 @@
+<%= render template: 'layouts/account' %>
+<aside class="right-side">                
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Society Events List
+            <small>List of Events</small>
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <div class="box-body table-responsive">
+                        <div id="example2_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <table id="example2" class="table table-bordered table-hover dataTable" aria-describedby="example2_info">
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th style="width: 200px">Event Name</th>
+                                    <th>Evnet Date</th>
+                                    <th >View Event</th>
+                                    <th >Share Event</th>                                                                   
+                                </tr>
+
+                                <% @results.each do |event|%>
+                                
+                                <tr>
+                                    <td><%= event.id %></td>
+                                    <td><%= event.name %></td>
+                                    <td><%= event.start %></td>
+                           
+                                    <td><%= link_to "View Event", controller: "events", action: "show", id: event.id %></td>
+
+ 
+                                    <td><%= link_to "Share Event", controller: "events", action: "share_events", id: event.id %></td>
+
+                                </tr>
+                                
+                                <% end %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box -->
+
+        </div>
+    </section><!-- /.content -->                
+            </aside><!-- /.right-side -->
+
+
+
