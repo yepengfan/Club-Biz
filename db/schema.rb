@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20140521133632) do
     t.integer  "remain"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "desc"
     t.string   "photo_1"
     t.string   "photo_2"
     t.string   "photo_3"
@@ -107,15 +106,6 @@ ActiveRecord::Schema.define(version: 20140521133632) do
     t.string   "photo_2"
     t.string   "photo_3"
   end
-
-  create_table "tweets", force: true do |t|
-    t.text     "contents"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "tweets", ["user_id"], name: "index_tweets_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
